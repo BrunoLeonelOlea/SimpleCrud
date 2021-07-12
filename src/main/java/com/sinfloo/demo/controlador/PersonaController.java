@@ -15,7 +15,7 @@ import com.sinfloo.demo.interfacesService.IPersonaServices;
 import com.sinfloo.demo.modelo.Persona;
 
 @Controller
-@RequestMapping
+@RequestMapping(path="")
 public class PersonaController {
 	
 	@Autowired
@@ -30,11 +30,11 @@ public class PersonaController {
 	@PostMapping("/save")
 	public String save(Persona p,Model model) {
 		service.save(p);
-		return "redirect:/listar";
+		return "redirect:/";
 		
 	}
 	
-	@GetMapping(path ="/listar")
+	@GetMapping(path ="")
 	public String listar(Model model) {
 		List<Persona> personas = service.listar();
 		model.addAttribute("personas", personas);
@@ -50,7 +50,7 @@ public class PersonaController {
 	@GetMapping("/eliminar/{id}")
 	public String delete(Model model, @PathVariable int id) {
 		service.delete(id);
-		return "redirect:/listar";
+		return "redirect:/";
 	}
 
 }
